@@ -1,0 +1,4 @@
+* TODO show the bloody turtle
+* TODO on-page js console
+  http://jsconsole.com/ ?
+

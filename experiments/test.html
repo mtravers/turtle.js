@@ -1,0 +1,13 @@
+<script type="text/javascript" src="turtle.js"></script>
+<canvas id="canvas" width=500 height=500>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+turtle.jumpto(225,225)
+for (var i = 0; i < 36; i++) {
+ turtle.fd(180);
+ turtle.rt(130);
+}
+</script>
+
+

@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/turtle.js"></script>
+   <link href='lesson.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body onload="go()">
+  <h3>Lesson Three: Iteration and Randomness</h3>
+  
+  <canvas id="canvas" width="600" height="600"/>
+
+</body>  
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function go() {
+  for (var i = 0; i < 30; i++) {
+     randomTriangle();
+   }
+} 
+
+function randomTriangle() {
+   turtle.jumpto(random(500), random(500));
+   turtle.rt(random(360));
+   var length = random(300);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+</script
+</html>

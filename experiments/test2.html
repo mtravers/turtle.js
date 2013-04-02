@@ -1,0 +1,22 @@
+<script type="text/javascript" src="turtle.js"></script>
+<canvas id="canvas" width=500 height=500b>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function spiral() {
+  turtle.jumpto(random(500), random(500));
+  var side = random(300);
+  for (var i = 0; i < 36; i++) {
+   turtle.fd(side);
+   turtle.rt(130);
+  }
+}
+
+for (var j = 0; j < 20; j++) {
+   spiral();
+}
+
+</script>
+
+

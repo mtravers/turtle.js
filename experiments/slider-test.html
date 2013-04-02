@@ -1,0 +1,48 @@
+<head>
+<script src="http://yui.yahooapis.com/2.9.0/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+<script src="http://yui.yahooapis.com/2.9.0/build/dragdrop/dragdrop-min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.9.0/build/slider/assets/skins/sam/slider.css">
+<script src="http://yui.yahooapis.com/2.9.0/build/slider/slider-min.js"></script>
+<script type="text/javascript" src="turtle.js"></script>
+</head>
+<body onload="draw()">
+<div id="sliderbg">
+    <div id="sliderthumb"><img src="http://developer.yahoo.com/yui/examples/slider/assets/thumb-bar.gif"></div>
+</div>
+<canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+var slider;
+ 
+function sliderInit() {
+    slider = YAHOO.widget.Slider.getHorizSlider("sliderbg", "sliderthumb", 0, 200);
+}
+
+function draw () {
+  adjust();
+  sliderInit();
+  turtle.jumpto(canvas.width * .5, canvas.height * .5);
+  turtle.pd("black");
+  turtle.fd(100);
+  filled_triangle("blue", 200);
+}
+
+function filled_triangle(ink, length) {
+    turtle.filling(ink, 1.0, function() { 
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+});
+}
+
+function triangle(length) {
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+
+
+</script>

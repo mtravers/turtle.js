@@ -1,0 +1,46 @@
+<script type="text/javascript" src="lib/turtle.js"></script>
+<body onload="draw(1)">
+  <a href="#" onclick="draw(0)">0</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(1)">1</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(2)">2</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(3)">3</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(4)">4</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(5)">5</a> &nbsp; &nbsp;
+ <a href="#" onclick="draw(6)">6</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(7)">7</a> &nbsp; &nbsp;  
+ <canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function adjust() {
+  canvas.width = document.width;
+ canvas.height = document.height - 30;
+}
+
+adjust();
+function draw_segment(level, length) {
+  if (level == 0) {
+     turtle.fd(length);
+  }   else {
+     var sub_length = length / 3;
+     draw_segment(level - 1, sub_length);
+     turtle.lt(60); 
+     draw_segment(level - 1, sub_length);
+     turtle.rt(120); 
+     draw_segment(level - 1, sub_length);
+     turtle.lt(60); 
+     draw_segment(level - 1, sub_length);
+  }
+}
+
+
+function draw (n) {
+  clear();
+  turtle.jumpto(20, canvas.height * .6);
+  draw_segment(n, canvas.width - 40);
+}
+
+</script>
+

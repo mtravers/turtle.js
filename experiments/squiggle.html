@@ -1,0 +1,27 @@
+<script type="text/javascript" src="lib/turtle.js"></script>
+<body onload="draw()">
+ <canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function adjust() {
+  canvas.width = document.width;
+  canvas.height = document.height;
+}
+
+
+function draw () {
+  adjust();
+  turtle.jumpto(canvas.width / 2, canvas.height / 2);
+  var n = Math.round(2000 * canvas.width * canvas.height / 250000) 
+  for (var j = 0; j < n; j++) {
+     turtle.fd(1);
+     turtle.rt(5 - random(10));
+     }
+}
+
+</script>
+
+

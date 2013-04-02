@@ -1,0 +1,37 @@
+<script type="text/javascript" src="turtle.js"></script>
+<body onload="draw()">
+ <canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function adjust() {
+  canvas.width = document.width;
+  canvas.height = document.height;
+}
+
+
+function draw_elt(level, length) {
+  if (level == 0) {
+     turtle.fd(length);
+  }   else {
+     var plen = length / 3;
+     draw_elt(level - 1, plen);
+     turtle.lt(60); 
+     draw_elt(level - 1, plen);
+     turtle.rt(120); 
+     draw_elt(level - 1, plen);
+     turtle.lt(60); 
+     draw_elt(level - 1, plen);
+  }
+}
+
+
+function draw () {
+  adjust();
+  turtle.jumpto(20, canvas.height / 2);
+  draw_elt(6, canvas.width - 40);
+}
+
+</script>

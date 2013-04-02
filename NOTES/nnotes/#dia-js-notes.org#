@@ -1,0 +1,32 @@
+* TODO show the bloody turtle
+* TODO on-page js console
+  http://jsconsole.com/ ?
+* TODO code/demo sharing 
+
+** show source code on page
+** have editor/runner there too.
+
+* Goals
+
+Why the fuck am I doing this? I just want a very minimal environment that uses actual HTML rather than some language I make up, because that is just more useful.
+
+That is, this should teach (some version of) actual web programming, not be a sandbox.
+
+Alternatives: use a better language that compiles or is interpreted by JS (ClojureScript, or a (to-be-invented) LogoScript.
+
+* See Also
+
+OK there are unsurprisingly a million of these, I don’t really need to roll my own (unless I want to take it somewhere different)
+
+
+(in-browser Logo interpreter)
+http://logo.twentygototen.org/LcVxHh-c
+
+(in-browser interaction, with a turtle)
+http://www.win.tue.nl/~wstomv/edu/javascript/tg-machine.html?_title=.1;_input=;_separator='%20';_program=;_output=#machine
+
+(unreadable colors but otherwise nice)
+http://www.dafishinsea.com/turtle/explorer/
+http://en.literateprograms.org/Turtle_graphics_(JavaScript)
+
+https://github.com/davebalmer/turtlewax

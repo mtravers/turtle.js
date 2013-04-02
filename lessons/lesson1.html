@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/turtle.js"></script>
+   <link href='lesson.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body onload="go()">
+  <h3>Lesson One: Hello Turtle</h3>
+  
+  <canvas id="canvas" width="400" height="400"/>
+
+</body>  
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function go() {
+   turtle.jumpto(200, 200);
+   var length = 100;
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+</script
+</html>

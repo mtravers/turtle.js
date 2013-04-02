@@ -1,0 +1,32 @@
+<script type="text/javascript" src="lib/turtle.js"></script>
+<body onload="draw()">
+ <canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function draw () {
+  adjust();
+  turtle.jumpto(canvas.width * .5, canvas.height * .5);
+  turtle.pd("black");
+  turtle.fd(100);
+  filled_triangle("blue", 200);
+}
+
+function filled_triangle(ink, length) {
+    turtle.filling(ink, function() { 
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+});
+}
+
+function triangle(length) {
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+
+
+</script>

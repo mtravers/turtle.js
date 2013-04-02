@@ -1,0 +1,68 @@
+<script type="text/javascript" src="lib/turtle.js"></script>
+<body onload="draw(1)">
+  <a href="#" onclick="draw(0)">0</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(1)">1</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(2)">2</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(3)">3</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(4)">4</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(5)">5</a> &nbsp; &nbsp;
+ <a href="#" onclick="draw(6)">6</a> &nbsp; &nbsp; 
+ <a href="#" onclick="draw(7)">7</a> &nbsp; &nbsp;  
+ <canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+
+
+// yes wanting lisp and macros right now
+function filled_triangle(ink, alpha, length) {
+    turtle.filling(ink, alpha, function() { 
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+});
+}
+
+function triangle(length) {
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+
+function draw_star(level, length) {
+   var m = length / (2 * Math.cos(d2r(30)));
+//   turtle.circle(5); // debug aid
+   turtle.push();
+   turtle.jump(m);
+   turtle.rt(150)
+   filled_triangle("red", level / 10, length);
+   turtle.restore();
+   turtle.rt(180);
+   turtle.jump(m);
+   turtle.rt(150);
+   filled_triangle("blue", level / 10, length);
+   if (level > 0) {
+     turtle.restore();
+     draw_star(level - 1, length / 2);
+     for (var i = 0;i<6;i++) {
+       turtle.restore();
+       turtle.rt(60 * i + 30 );
+       turtle.jump(length / 2 );
+       turtle.rt(30);			     
+       draw_star(level - 1, length / 4);
+      }
+   }
+   turtle.pop();
+}
+
+function draw (n) {
+  adjust();
+  turtle.jumpto(canvas.width * .5, canvas.height * .5);
+  turtle.aim(-90);			     
+  draw_star(n, 600);
+}
+
+</script>
+

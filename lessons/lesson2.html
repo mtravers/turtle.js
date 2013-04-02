@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script type="text/javascript" src="../lib/turtle.js"></script>
+   <link href='lesson.css' rel='stylesheet' type='text/css'>
+</head>
+
+<body onload="go()">
+  <h3>Lesson Two: Routines</h3>
+  
+  <canvas id="canvas" width="600" height="600"/>
+
+</body>  
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function go() {
+   turtle.jumpto(200, 200);
+   triangle(100);
+   turtle.jumpto(100, 100);
+   triangle(120);
+   turtle.jumpto(300, 300);
+   triangle(150);
+} 
+
+function triangle(length) {
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+</script
+</html>

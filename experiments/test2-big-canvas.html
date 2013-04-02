@@ -1,0 +1,29 @@
+<script type="text/javascript" src="turtle.js"></script>
+<canvas id="canvas" width="100" height="100">
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+function adjust() {
+  canvas.width = document.width;
+  canvas.height = document.height;
+}
+
+function spiral() {
+  turtle.jumpto(random(canvas.width), random(canvas.height));
+  var side = random(300);
+  for (var i = 0; i < 36; i++) {
+   turtle.fd(side);
+   turtle.rt(130);
+  }
+}
+
+adjust();
+var n = Math.round(20 * canvas.width * canvas.height / 250000) 
+for (var j = 0; j < n; j++) {
+   spiral();
+}
+
+</script>
+
+

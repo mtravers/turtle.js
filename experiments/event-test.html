@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="lib/turtle.js"></script>
+  <script type="text/javascript" src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
+</head>
+
+<body onload="draw()">
+
+ <canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+canvas.addEventListener("mousedown", getPosition, false);
+
+function getPosition(event)
+{
+  var x = event.x;
+  var y = event.y;
+
+  x -= canvas.offsetLeft;
+  y -= canvas.offsetTop;
+
+//  alert("x:" + x + " y:" + y);
+
+turtle.jumpto(x,y);
+turtle.pd(randomColor());
+//turtle.pd("red");
+turtle.circle(5); 
+}
+
+
+function draw (n) {
+  adjust();
+}
+
+
+</script>
+

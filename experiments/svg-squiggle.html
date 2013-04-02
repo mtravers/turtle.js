@@ -1,0 +1,26 @@
+<script type="text/javascript" src="lib/turtle.js"></script>
+<body onload="draw()">
+<svg id="svg" width="600" height="600" />
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('svg');
+var turtle = new SVGTurtle(canvas);
+
+function adjust() {
+  canvas.width = document.width;
+  canvas.height = document.height;
+}
+
+
+function draw () {
+//  adjust();
+  turtle.jumpto(canvas.width.baseVal.value / 2, canvas.height.baseVal.value / 2);
+  for (var j = 0; j < 1000; j++) {
+     turtle.fd(1);
+     turtle.rt(5 - random(10));
+     }
+}
+
+</script>
+
+

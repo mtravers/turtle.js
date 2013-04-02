@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <script type="text/javascript" src="turtle.js"></script>
+  <script type="text/javascript" src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
+</head>
+
+<body onload="draw()">
+
+<p class='yui3-skin-sam'>
+        <label for="horiz_value">Value: </label>
+            <input id="horiz_value" value="0">
+        <span class="horiz_slider"></span>
+</p>
+
+
+<canvas id="canvas" width="100" height="100">
+</body>
+<script type="text/javascript">
+var canvas = document.getElementById('canvas');
+var turtle = new CanvasTurtle(canvas);
+
+var slider;
+ 
+YUI().use("slider", function (Y) {
+
+function sliderInit() {
+slider = new Y.Slider();
+
+// Link the input value to the Slider
+xInput = Y.one( "#horiz_value" );
+xInput.setData( { slider: slider } );
+
+// Pass the input as the 'this' object inside updateInput
+slider.after( "valueChange", updateInput, xInput );
+slider.after( "valueChange", redraw, xInput );
+xInput.on( "keyup", updateSlider );
+    
+// Render the Slider next to the input
+slider.render('.horiz_slider')
+
+
+}
+// Function to pass input value back to the Slider
+function updateSlider( e ) {
+    var data   = this.getData(),
+        slider = data.slider,
+        value  = parseInt( this.get( "value" ), 10 );
+
+    if ( data.wait ) {
+        data.wait.cancel();
+    }
+
+    // Update the Slider on a delay to allow time for typing
+    data.wait = Y.later( 200, slider, function () {
+        data.wait = null;
+        this.set( "value", value );
+    } );
+}
+
+// Function to update the input value from the Slider value
+function updateInput( e ) {
+    this.set( "value", e.newVal );
+}
+
+sliderInit();
+
+});
+
+function draw() {
+  adjust();
+  redraw();
+}
+
+function redraw(e) {
+  clear();
+  turtle.jumpto(canvas.width * .5, canvas.height * .5);
+  turtle.aim(0);
+  turtle.pd("black");
+  for (var i = 1;i<20;i++) {
+    turtle.fd(50);
+    turtle.rt(slider.getValue());
+  }
+  turtle.fd(100);
+  filled_triangle("blue", slider.getValue());
+}
+
+
+function filled_triangle(ink, length) {
+    turtle.filling(ink, 1.0, function() { 
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+        turtle.fd(length); turtle.rt(120);
+});
+}
+
+function triangle(length) {
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+   turtle.fd(length); turtle.rt(120);
+}
+
+
+</script>
+
